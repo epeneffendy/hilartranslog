@@ -39,11 +39,25 @@ class Site extends CI_Controller
 
     public function index($error = NULL)
     {
+        if ($this->session->userdata('is_login') == true) {
+            redirect('site');
+        }
+        if ($this->input->post()) {
+            $this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[5]|max_length[50]');
+            $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[5]|max_length[22]');
+            $is_check = $this->check_account();
+
+            if ($this->form_validation->run() && $is_check === true) {
+                $this->user_model->last_login($this->session->userdata('id'), $this->session->userdata('__ci_last_regenerate'));
+                redirect('site');
+            }
+        }
+
         $data['error'] = $error;
-        $data['title'] = 'Dashboard';
-        $data['breadcrumbs'][] = ['label' => 'Dashboard', 'active' => 'active'];
-        $data['main_content'] = 'site/dashboard';
-        $this->load->view('layouts/main_layout', $data);
+        $data['title'] = 'Login';
+        $data['js_page'] = $this->js_page;
+        $data['breadcrumbs'][] = '';
+        $this->load->view('site/login', $data);
     }
 
     public function check_account()
