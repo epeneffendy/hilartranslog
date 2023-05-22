@@ -16,7 +16,7 @@ class Setting_model extends CI_Model
         $sql = $this->db->query("select  a.name as menu, a.slug as slug_menu, a.level, a.link, a.type, b.content, b.flag, b.status, b.flag_desc, b.desc
                   from menu a
                   inner join settings b on a.slug = b.slug
-                  where a.type = 4")->result();
+                  where a.type = 4 and b.active = 1")->result();
         return $sql;
     }
 

@@ -10,7 +10,7 @@ if (!$isNewRecord) {
     <div class="col-md-12">
         <div class="card card-info">
             <div class="card-header">
-                <h3 class="card-title">Create Products</h3>
+                <h3 class="card-title">Create Services</h3>
             </div>
             <form class="form-horizontal" method="POST" action="<?php echo base_url($link); ?>"
                   enctype="multipart/form-data">

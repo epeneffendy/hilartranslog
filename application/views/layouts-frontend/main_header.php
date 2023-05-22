@@ -36,10 +36,13 @@
 <!-- ======= Header ======= -->
 <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center">
-        <a href="<?= base_url('web/index') ?>">
-            <img src="<?= base_url(); ?>assets/hilar/img/logo.png"
-                 alt="<?= $company->logo ?>" title="<?= $company->logo ?>"/>
-        </a>
+        <h1 class="logo me-auto">
+            <a href="<?= base_url('web/index') ?>">
+                <img src="<?= base_url(); ?>assets/hilar/img/logo.png"
+                     alt="<?= $company->logo ?>" title="<?= $company->logo ?>"/>
+            </a>
+        </h1>
+
         <nav id="navbar" class="navbar">
             <ul>
                 <?php foreach ($menus as $item):  ?>
